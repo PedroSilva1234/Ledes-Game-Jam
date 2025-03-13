@@ -2,3 +2,4 @@
 // Você pode escrever seu código neste editor
 Movimentacao(); 
 
+atirar();
