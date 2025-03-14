@@ -1,9 +1,8 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
-Movimentacao(); 
 
-atirar();
 
-dano();
+other.vida-= Dano;
 
-recarregar_tiros();
+
+destruir_obj();

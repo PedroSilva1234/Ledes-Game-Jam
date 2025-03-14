@@ -10,8 +10,11 @@ function Movimentacao(){
 	
 	var _right = keyboard_check(ord("D"))
 	
-	var _jump = keyboard_check_pressed(ord("K"));
+	var _jump = keyboard_check_pressed(vk_space);
 	
+	var _reload = keyboard_check_pressed(ord("R")); //bootao de reload
+
+
 	//aplicando controle ao movimento
 	velh  = (_right - _left)*max_velh; //velocidade horizontal
 	
@@ -28,24 +31,38 @@ function Movimentacao(){
 	{
 		velv -= max_velv;
 	}
+
 }
 
 function Create_prot(){
 	
 	gravidade = 0.5;//variavel da velocidade da gravidade
 	
+	//Velocidades
 	velh = 0;//variavel da velocidade do player horizontal
 	
 	velv= 0;//variavel da velocidade do player vertical
 	
-	max_velh = 8;//valor max da velocidade do player horizontal
+	//Limite de velocidades
 	
-	max_velv= 15;//valor max da velocidade do player horizontal
+	max_velh = 8;//horizontal
 	
-	qtd_tiros = 3;
+	max_velv= 15;// vertical
 	
-	tiro_danos = 1; 
 	
+	qtd_tiros = 3; //quantidade de tiros do player
+	
+	tiro_danos = 1;  //dano do tiro 
+	
+	vida = 3;
+	
+	recarregar = false;
+	
+	tempo_recarregar = 60;
+	
+	//Variavéis de controle
+	
+
 	
 }
 
@@ -64,11 +81,12 @@ function colisao()
 		
 		//Você vai parar	
 		velh = 0;
+		
 		//Saindo do laço
 		break;
 		}
 		else //Nao bati na parede
-		{
+		{ 
 			x += _velh; //Posso me mover
 			
 		}
@@ -100,7 +118,7 @@ function colisao()
 
 function atirar()
 {
-	
+	//checa a direção do player
 	var _left = keyboard_check(ord("A"))
 	
 	var _right = keyboard_check(ord("D"))
@@ -118,7 +136,7 @@ function atirar()
 	}
 	
 	
-	var _tiro = keyboard_check_pressed(ord("L"));
+	var _tiro = keyboard_check_pressed(ord("L")); //checa se o player deu um tiro
 	
 	if(_tiro){
 		
@@ -129,23 +147,34 @@ function atirar()
 		}
 		
 		else{
-		qtd_tiros -=1;
+		qtd_tiros -=1;//diminui uma bala
 		
-		var t = instance_create_layer(x,y,layer,obj_tiro);
-		t.speed = max_velv;
-		t.direction = 180 *face;
+		var t = instance_create_layer(x,y,layer,obj_tiro);//dá o tiro
+		t.speed = max_velv; //velocidade do tiro
+		t.dano = 1;//dano do tiro
+		t.direction = 180 *face; //define a direção em que o tiro vai sair, esquerda ou direita
+		
+		}
+		
 	}
+
+}
+
+
+function dano() //checa se o obj morreu, se morreu delete-o
+{
+	
+	if(vida<=0)
+	{
+		destruir_obj();
 		
-}
-
-	
-
+	}
 	
 	
-}
+} 
 
 
-function destruir_obj()
+function destruir_obj() //funcao de destruir objetos
 {
 	instance_destroy();
 }

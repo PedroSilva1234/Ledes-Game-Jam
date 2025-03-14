@@ -1,9 +1,6 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
-Movimentacao(); 
 
-atirar();
+Create_prot();
 
-dano();
-
-recarregar_tiros();
+vida = 2;
