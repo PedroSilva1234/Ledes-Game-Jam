@@ -1,4 +1,11 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
 
-vida--;
+
+if(!invulnerabilidade)
+{
+	vida--;	
+	invulnerabilidade = true;
+	alarm[0] = 120;
+}
+

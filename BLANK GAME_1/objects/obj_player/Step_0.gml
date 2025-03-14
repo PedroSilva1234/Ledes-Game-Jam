@@ -6,4 +6,8 @@ atirar();
 
 dano();
 
-recarregar_tiros();
+imortal();
+
+reload();
+
+//recarregar_tiros();

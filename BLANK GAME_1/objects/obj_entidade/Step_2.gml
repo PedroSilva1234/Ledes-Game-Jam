@@ -2,3 +2,5 @@
 // Você pode escrever seu código neste editor
 
 //Usar as variaveis
+
+colisao();
