@@ -19,6 +19,7 @@ function Movimentacao(){
 	//aplicando gravidade
 	velv += gravidade;
 	
+	
 	//limitando a gravidade
 	if(velv > max_velv)
 	{
@@ -45,7 +46,12 @@ function Create_ent()
 	max_velh = 8;//horizontal
 	
 	max_velv= 15;// vertical
+	
+	estado = "parado";
+	debug = false;
 }
+
+
 function Create_prot(){
 	
 	
@@ -120,6 +126,70 @@ function colisao()
 	
 } 
 
+
+//-----------------------------Funções para movimento do inimigo
+function muda_estado()
+{
+	
+}
+
+/*controla_estado = function()
+{
+	//Controlando os estados do inimigo
+	switch(estado)
+	{
+		#region parado
+		case "parado":
+			//diminuindo o tempo
+			tempo--;
+			//ele deve ficar parado
+		
+			velv = 0;
+			velh =0;
+			
+			if(tempo<=0)
+			{
+				//mudando de estado
+				estado = choose("parado","andando");
+				
+				//reseto o tempo
+				tempo = tempo_estado;
+			}
+			
+		
+		break;
+		#endregion
+		
+		
+		#region andando
+		
+		case("andando"):
+		
+			//Estado de andando
+			tempo--;
+			
+			//Escolhendo um ponto aleatório da Room
+			//Checando se eu ainda não tenho destino
+			if(destino_x ==0 or destino_y ==0){
+				
+				destino_x = random_range(0, room_width);
+				
+				destino_y = random_range(0, room_height);
+			}
+			
+			//Andando em direção ao destino
+			
+			var _dir = point_direction(x,y,destino_x,destino_y);
+			
+			velh = lengthdir_x(max_vel,_dir);
+			velv = lengthdir_y(max_vel, _dir);
+			
+			break;
+			#endregion
+	}
+}
+*/
+
 function movimento_inimigo()
 {
 	
@@ -128,6 +198,9 @@ function movimento_inimigo()
 	
 }
 
+
+
+//-----------------------------------------------------------FUNÇÕES DE AÇÕOES DO PERSONAGEM
 function atirar()
 {
 	//checa a direção do player
